@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('issue', function (Blueprint $table) {
             $table->id();
-            $table->string('issue', 50);
+            $table->string('select_asset', 200);
             $table->string('description', 100);
             $table->string('type', 50);
-            $table->string('priority');
+            // $table->string('image');
             $table->string('department', 50);
             $table->string('status');
             $table->string('date');

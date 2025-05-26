@@ -16,4 +16,9 @@ class Asset extends Model
     {
         return $this->hasMany(AssetAttribute::class, 'asset_id', 'id');
     }
+    public function logs()
+    {
+        return $this->hasMany(Log::class);
+    }
+
 }

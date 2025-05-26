@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AssetController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IssueController;
 use App\Http\Controllers\LocationController;
@@ -43,10 +44,26 @@ Route::group(['prefix' => '', 'middleware' => 'auth'], function () {
     Route::get('/issues/list', [IssueController::class, 'index'])->name('issues.list');
     Route::get('/issues/{id}/edit', [IssueController::class, 'edit'])->name('issues.edit');
     Route::put('/issues/{id}', [IssueController::class, 'update'])->name('issues.update');
+    Route::post('/issues/images/delete/{id}', [IssueController::class, 'deleteImage'])->name('image.delete.post');
+
+    //Route::delete('/issues/images/{id}/delete', [IssueController::class, 'deleteImage'])->name('image.delete.post');
     Route::delete('/issues/{id}', [IssueController::class, 'destroy'])->name('issues.delete');
 
     //route for "user"
     Route::get('/user/list', [UserController::class, 'index'])->name('user.list');
+    Route::get('/user/create', [UserController::class, 'create'])->name('user.create');
+    Route::post('/user', [UserController::class, 'store'])->name('user.store');
+
+    // Route::get('/user/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
+    // Route::put('/user/{id}', [UserController::class, 'update'])->name('user.update');
     Route::delete('/user/{id}', [UserController::class, 'destroy'])->name('user.delete');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+    //Route::get('/get-next-asset-number/{locationCode}', [AssetController::class, 'getNextAssetNumber']);
+
+    // asset-search
+    //Route::get('/assets/search', [AssetController::class, 'search'])->name('assets.search');
+    //Route::get('/location/search', [LocationController::class, 'search'])->name('location.search');
+
+    //Route::get('/assets', [AssetController::class, 'index'])->name('assets.index');
 
 });

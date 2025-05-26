@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('assigned_to');
             $table->string('location');
             $table->string('issue_date');
-            $table->string('resubmit_date');
+            $table->string('resubmit_date')->nullable();
             $table->string('issued_by');
             $table->string('approved_by');
             $table->timestamps();

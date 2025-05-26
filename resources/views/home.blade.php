@@ -16,7 +16,8 @@
 
     <!-- Welcome message -->
     <div class="text-gray-700">
-        <span class="font-bold"> Welcome to ninety one</span>
+        <span class="font-bold dark:text-white"> Welcome to ninety one</span>
+
 
     </div>
 </div>

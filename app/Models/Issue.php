@@ -9,6 +9,11 @@ class Issue extends Model
     protected $guarded = ['id'];
     protected $table   = 'issue';
 
+    public function images()
+    {
+        return $this->hasMany(IssueImage::class);
+    }
+
     use SoftDeletes;
 
 }
