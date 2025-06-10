@@ -1,6 +1,12 @@
 @extends('layouts.app')
 @section('content')
 
+@if ($errors->has('error'))
+<div class="text-sm text-red-500 dark:text-red-500 mb-4">
+    {{ $errors->first('error') }}
+</div>
+@endif
+
 
 
 <div class="max-w-7xl mx-auto bg-white shadow-sm dark:bg-gray-700">
@@ -21,26 +27,28 @@
                 <div class="grid grid-cols-2 gap-6 mb-6">
 
                     <div>
-                        <label for="select_asset" class="block text-sm font-bold text-gray-700 mb-1 dark:text-white">Select asset</label>
+                        <label for="select_asset" class="block text-sm font-bold text-gray-700 mb-1 dark:text-white">Select asset (asset|name)</label>
                         <div class="relative">
                             <select id="select_asset" name="select_asset" value="{{ old('select_asset') }}" class="w-full px-3 py-2 border border-gray-300 rounded-sm bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 appearance-none pr-8 dark:text-white dark:bg-gray-600">
                                 <option value="">Select asset</option>
                                 @foreach($asset as $set)
-                                <option value="{{ $set->type }}=>{{ $set->issued_by }}" {{ old('select_asset') == $set->type.'=>'.$set->issued_by ? 'selected' : '' }}>{{ $set->type}}=>{{ $set->issued_by}}</option>
+                                <option value="{{ $set->type }} | {{ $set->issued_by }}" {{ old('select_asset') == $set->type. '|' .$set->issued_by ? 'selected' : '' }}>{{ $set->type}} | {{ $set->issued_by}}</option>
 
                                 @endforeach
 
                             </select>
-                            @error('select_asset')
-                            <span class="text-sm text-red-500 dark:text-red-500">{{ $message }}</span>
-                            @enderror
 
-                            <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+
+                            <div class="absolute inset-y-0 right-0 mt-3 items-center px-2 pointer-events-none">
                                 <div class="w-4 h-4 text-gray-400">
                                     <!-- Custom chevron-down using borders instead of SVG -->
                                     <div class="w-2 h-2 border-r border-b border-gray-500 transform rotate-45 mt-1 ml-1 dark:border-white"></div>
                                 </div>
                             </div>
+                            @error('select_asset')
+                            <span class="text-sm text-red-500 dark:text-red-500">{{ $message }}</span>
+                            @enderror
+
                         </div>
                     </div>
 
@@ -114,7 +122,8 @@
 
 
                                 <option>Open</option>
-                                <option>In progress</option>
+                                <option>Out for service</option>
+                                <option>Can't repair</option>
                                 <option>Close</option>
                             </select>
                             @error('')

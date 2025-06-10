@@ -101,7 +101,7 @@ class AssetController extends Controller
     public function store(Request $request)
     {
         $record = $request->validate([
-            'type'            => 'required|string|max:50',
+            'type'            => 'required|string|max:50|unique:assets,type',
             'assigned_to'     => 'required|string|max:100',
             'location'        => 'required|string|max:50',
             'issue_date'      => 'required|date',

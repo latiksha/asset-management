@@ -1,5 +1,15 @@
 @extends('layouts.app')
 @section('content')
+{{-- @if ($errors->any())
+<div class="text-red-600 bg-red-100 p-2 rounded">
+    <ul class="list-disc list-inside">
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+@endforeach
+</ul>
+</div>
+@endif --}}
+
 <div class="max-w-7xl mx-auto bg-white shadow-sm dark:bg-gray-700">
     <div class="border-b border-gray-200 py-4 px-6 text-center">
         <h1 class="text-lg font-medium text-gray-800 dark:text-white">Add user</h1>
@@ -16,20 +26,35 @@
                     <div>
                         <label for="name" class="block text-sm font-bold text-gray-700 mb-1 dark:text-white ">Name</label>
                         <input type="text" id="name" name="name" class="w-full px-3 py-2 border border-gray-300 rounded-sm focus:outline-none focus:ring-1 focus:ring-blue-500 dark:bg-gray-600 dark:text-white">
+                        @error('name')
+                        <div class="text-sm text-red-600">{{ $message }}</div>
+                        @enderror
+
+
                     </div>
                     <div>
                         <label for="email" class="block text-sm font-bold text-gray-700 mb-1 dark:text-white">email</label>
                         <input type="text" id="email" name="email" class="w-full px-3 py-2 border border-gray-300 rounded-sm focus:outline-none focus:ring-1 focus:ring-blue-500 dark:bg-gray-600 dark:text-white">
+                        @error('email')
+                        <div class="text-sm text-red-600">{{ $message }}</div>
+                        @enderror
+
 
                     </div>
                     <div>
                         <label for="phone" class="block text-sm font-bold text-gray-700 mb-1 dark:text-white">Mobile no.</label>
                         <input type="text" id="phone" name="phone" class="w-full px-3 py-2 border border-gray-300 rounded-sm focus:outline-none focus:ring-1 focus:ring-blue-500 dark:bg-gray-600 dark:text-white">
+                        @error('phone')
+                        <div class="text-sm text-red-600">{{ $message }}</div>
+                        @enderror
 
                     </div>
                     <div>
                         <label for="password" class="block text-sm font-bold text-gray-700 mb-1 dark:text-white">Password</label>
                         <input type="text" id="password" name="password" class="w-full px-3 py-2 border border-gray-300 rounded-sm focus:outline-none focus:ring-1 focus:ring-blue-500 dark:bg-gray-600 dark:text-white">
+                        @error('password')
+                        <div class="text-sm text-red-600">{{ $message }}</div>
+                        @enderror
 
                     </div>
 

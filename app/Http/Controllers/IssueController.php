@@ -23,7 +23,7 @@ class IssueController extends Controller
         $depart      = Issue::select('department')->distinct()->pluck('department');
         $issues      = Issue::select('type')->distinct()->pluck('type');
         $description = Issue::select('description')->distinct()->pluck('description');
-        $status      = Issue::select('status')->distinct()->pluck('status');
+        $statu       = Issue::select('status')->distinct()->pluck('status');
         $dates       = Issue::select('date')->distinct()->pluck('date');
 
         if ($request->filled('select_asset')) {
@@ -53,7 +53,7 @@ class IssueController extends Controller
         }
 
         $issue = $query->paginate($items)->withQueryString();
-        return view("issues.list", compact("issue", "items", "select", "depart", "issues", "status"));
+        return view("issues.list", compact("issue", "items", "select", "depart", "issues", "statu"));
     }
 
     /**
@@ -71,6 +71,14 @@ class IssueController extends Controller
             'status'       => 'required|string|max:20',
             'date'         => 'required|date',
         ]);
+        //trial
+        $existingIssue = Issue::where('select_asset', $validated['select_asset'])
+            ->where('status', 'open')
+
+            ->exists();
+        if ($existingIssue) {
+            return back()->withErrors(['select_asset' => 'This asset already has an open issue. Close it before adding a new one.']);
+        }
 
         $issue = Issue::create($validated);
 

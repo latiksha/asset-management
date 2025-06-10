@@ -46,7 +46,7 @@ class LocationController extends Controller
     public function store(Request $request)
     {
         $details = $request->validate([
-            'location'              => 'required|string|max:100',
+            'location'              => 'required|string|max:100|unique:location,location',
             'location_code'         => 'required|string|max:10', // Add this line
             'address'               => 'required|string',
             'contact_person'        => 'required|string|max:50',

@@ -22,9 +22,13 @@
         <form method="GET" action="{{ route('issues.list') }}" id="filter" class="grid grid-cols-3 gap-4 mt-3">
 
             <div class="flex flex-col">
-                <label for="select_asset" class="text-sm font-medium text-gray-900 dark:text-white mb-1">select asset</label>
+                <label for="select_asset" class="text-sm font-medium text-gray-900 dark:text-white mb-1">select asset (asset|name)</label>
+
+
                 <select name="select_asset" id="select_asset" class="p-1 text-sm border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-700 dark:text-white dark:border-gray-600">
                     <option value="">select assets</option>
+
+
                     @foreach ($select as $s)
                     <option value="{{ $s}}" {{ request('select_asset') == $s ? 'selected' : '' }}>
                         {{ $s }}
@@ -68,7 +72,10 @@
                 <label for="status" class="text-sm font-medium text-gray-900 dark:text-white mb-1">status</label>
                 <select name="status" id="status" class="p-1 text-sm border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-700 dark:text-white dark:border-gray-600">
                     <option value="">select</option>
-                    @foreach ($status as $stat)
+
+
+
+                    @foreach ($statu as $stat)
                     <option value="{{ $stat }}" {{ request('status') == $stat ? 'selected' : '' }}>
 
                         {{ $stat }}
