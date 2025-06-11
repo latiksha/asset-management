@@ -30,14 +30,6 @@ class AssetController extends Controller
             $query->where('location', 'like', '%' . $request->location . '%');
         }
 
-        // if ($request->filled('date_range')) {
-        //     [$from, $to] = explode(' - ', $request->date_range);
-
-        //     $query->where(function ($query) use ($from, $to) {
-        //         $query->whereBetween('issue_date', [$from, $to])
-        //             ->orWhereBetween('resubmit_date', [$from, $to]);
-        //     });
-        // }
         if ($request->filled('date_range') && strpos($request->date_range, ' - ') !== false) {
             [$from, $to] = explode(' - ', $request->date_range);
 
@@ -69,10 +61,6 @@ class AssetController extends Controller
     {$location = Location::all();
         $defaultLocation                     = $location->first();
         $locationCode                        = $defaultLocation ? strtoupper($defaultLocation->location_code) : 'XX';
-
-        // $count              = Asset::count() + 1;
-        // $serial             = str_pad($count, 3, '0', STR_PAD_LEFT);
-        // $previewAssetNumber = "AV-FA-XX-{$serial}";
 
         $lastAsset = Asset::where('asset_number', 'LIKE', "AV-FA-{$locationCode}-%")
             ->orderByDesc('id')
@@ -116,11 +104,6 @@ class AssetController extends Controller
 // Fetch location code based on selected location name
             $location     = Location::where('location', $record['location'])->first();
             $locationCode = $location ? strtoupper($location->location_code) : 'XX';
-
-// Generate asset number
-//             $count       = Asset::count() + 1;
-//             $serial      = str_pad($count, 3, '0', STR_PAD_LEFT);
-//             $assetNumber = "AV-FA-{$locationCode}-{$serial}";
 
             //new asset added
             $lastAsset = Asset::where('asset_number', 'LIKE', "AV-FA-{$locationCode}-%")
@@ -225,45 +208,5 @@ class AssetController extends Controller
 
         return back()->withErrors(['error' => 'Failed to delete Asset. Please try again.']);
     }
-
-    // public function search(Request $request)
-    // {
-    //     $user = $request->input('user');
-
-    //     $asset = Asset::when($user, function ($query, $user) {
-    //         return $query->where('assigned_to', 'like', '%' . $user . '%');
-    //     })->get();
-
-    //     return view('assets.list', compact('asset'));
-
-    // }
-
-    // public function search(Request $request)
-    // {
-    //     $query = Asset::query();
-
-    //     if ($request->has('search')) {
-    //         $query->where('assigned_to', 'like', '%' . $request->search . '%');
-    //     }
-
-    //     return view('assets.list', [
-    //         'assets' => $query->paginate(10)->withQueryString(),
-    //     ]);
-    // }
-
-    // public function search(Request $request)
-    // {
-    //     $query = Asset::query();
-    //     $items = $request->input('items', 5);
-
-    //     if ($request->filled('search')) {
-    //         $query->where('assigned_to', 'like', '%' . $request->search . '%');
-    //     }
-
-    //     return view('assets.list', [
-    //         'assets' => $query->paginate(10)->withQueryString(),
-    //         'items'  => $items,
-    //     ]);
-    // }
 
 }

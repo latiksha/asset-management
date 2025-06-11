@@ -57,7 +57,7 @@
 
                         <div class="w-4 h-4 text-gray-400">
 
-                            <!-- Custom chevron-down using borders instead of SVG -->
+                            <!-- Custom chevron-down using borders -->
                             <div class="w-2 h-2 border-r border-b border-gray-500 transform rotate-45 mt-1 ml-1 dark:border-white"></div>
                         </div>
                     </div>
@@ -106,11 +106,7 @@
 
             </div>
 
-            {{-- asset_number --}}
-            {{-- <div>
-                <label for="asset_number" class="block text-sm font-bold text-gray-700 mb-1 dark:text-white">Asset Number</label>
-                <input type="text" id="asset_number" name="asset_number" value="" readonly class="w-full px-3 py-2 border border-gray-300 rounded-sm focus:ring-1 focus:ring-blue-500 dark:text-white dark:bg-gray-600">
-            </div> --}}
+
 
 
         </div>
@@ -194,35 +190,6 @@
             fieldCount--;
         });
     });
-
-
-    /* document.addEventListener('DOMContentLoaded', function() {
-         const locationSelect = document.getElementById('location');
-         const assetNumberInput = document.getElementById('asset_number');
-         const locationCodeInput = document.getElementById('location_code'); // ← get the hidden input
-
-         if (!locationSelect || !assetNumberInput || !locationCodeInput) return;
-
-         /* locationSelect.addEventListener('change', async function() {
-              const selectedOption = this.options[this.selectedIndex];
-              //const locationName = selectedOption.value;
-              const locationCode = selectedOption.getAttribute('data-code') || 'XX';
-              // ✅ Set the value of the hidden input
-              locationCodeInput.value = locationCode;
-
-              try {
-                  // Fetch the latest asset number for this location
-                  const response = await fetch(`/api/get-next-asset-number/${locationCode}`);
-                  const data = await response.json();
-
-                  // Update the asset number input with the new value
-                  assetNumberInput.value = data.nextAssetNumber;
-              } catch (error) {
-                  console.error('Error fetching next asset number:', error);
-                  // Fallback to simple pattern if API call fails
-                  assetNumberInput.value = `AV-FA-${locationCode}-001`;
-              }
-          }); });*/
 
 </script>
 

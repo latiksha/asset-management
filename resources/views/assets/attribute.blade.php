@@ -9,7 +9,7 @@
         <form action="{{route('storeAttribute')}}" method="POST">
             @csrf
             <div class="bg-white p-6 rounded-sm shadow-sm">
-                <!-- First Row: Asset ID + Key + Value -->
+                <!-- First Row: Asset ID ,key+value-->
                 <div class="grid grid-cols-3 gap-4 mb-6 items-end">
                     <!-- Asset ID -->
                     <div>
@@ -28,7 +28,7 @@
                     </div>
                 </div>
 
-                <!-- Container for dynamically added fields -->
+                <!-- Container for dynamically adding fields -->
                 <div id="field_container"></div>
 
                 <!-- Buttons -->

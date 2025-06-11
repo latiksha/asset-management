@@ -47,7 +47,7 @@ class LocationController extends Controller
     {
         $details = $request->validate([
             'location'              => 'required|string|max:100|unique:location,location',
-            'location_code'         => 'required|string|max:10', // Add this line
+            'location_code'         => 'required|string|max:10',
             'address'               => 'required|string',
             'contact_person'        => 'required|string|max:50',
             'contact_person_mobile' => 'required|digits:10',
@@ -101,7 +101,7 @@ class LocationController extends Controller
 
         $location = Location::findOrFail($id);
         return view('location.edit', compact('location'));
-        //return view('edit', ['location'=>$location]);//just for now
+
     }
 
     /**
@@ -138,24 +138,5 @@ class LocationController extends Controller
 
         return back()->withErrors(['error' => 'Failed to delete location. Please try again.']);
     }
-
-    // public function search(Request $request)
-    // {
-    //     // $query = Location::query();
-    //     // $items = $request->input('items', 5);
-
-    //     if (! $request->filled('search')) {
-    //         return redirect()->route('location.list');
-
-    //     }
-    //     $items = $request->input('items', 5);
-    //     $query = Location::query();
-    //     $query->where('location', 'like', '%' . $request->search . '%');
-
-    //     return view('location.list', [
-    //         'location' => $query->paginate(10)->withQueryString(),
-    //         'items'    => $items,
-    //     ]);
-    // }
 
 }

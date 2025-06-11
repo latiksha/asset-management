@@ -64,126 +64,106 @@
             </div>
 
 
-            {{-- <div class="flex flex-col">
-                <label for="issued_by" class="text-sm font-medium text-gray-900 dark:text-white mb-1">Issued By</label>
-                <input type="text" name="issued_by" id="issued_by" value="{{ request('issued_by') }}" class="p-1 ps-2 text-sm text-gray-500 border border-gray-300 rounded-lg bg-gray-50 focus:outline-none focus:border-gray-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="issued by..." />
-    </div>
 
+            <div class="float-right mt-5 ml-2 gap-2">
 
-    <div class="flex flex-col">
-        <label for="approved_by" class="text-sm font-medium text-gray-900 dark:text-white mb-1">Approved By</label>
-        <input type="text" name="approved_by" id="approved_by" value="{{ request('approved_by') }}" class="p-1 ps-2 text-sm text-gray-500 border border-gray-300 rounded-lg bg-gray-50 focus:outline-none focus:border-gray-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="approved by..." />
-    </div> --}}
-    <div class="float-right mt-5 ml-2 gap-2">
+                <button type="submit" class="border-2 bg-green-500 px-4 py-0.5 text-white rounded-md">filter</button>
 
-        <button type="submit" class="border-2 bg-green-500 px-4 py-0.5 text-white rounded-md">filter</button>
+                <button type="button" onclick="window.location.href='{{ route('assets.list') }}'" class="border-2 bg-blue-500 px-4 py-0.5 text-white rounded-md">
 
-        <button type="button" onclick="window.location.href='{{ route('assets.list') }}'" class="border-2 bg-blue-500 px-4 py-0.5 text-white rounded-md">
-
-            Clear
-        </button>
-
-
-
-        {{-- <button type="submit" id="button" class="border-2 bg-blue-500 px-4 py-0.5 text-white rounded-md"><a href="{{ route('assets.list') }}">clear</a></button> --}}
-
-    </div>
-
-    </form>
-
-
-
-    {{-- <form method="GET" action="{{ route('assets.search') }}" class="mb-4">
-    <input type="text" name="search" value="{{ request('search') }}" placeholder="Search by user name" class="border p-2 rounded w-64">
-    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">
-        Search
-    </button>
-    </form> --}}
+                    Clear
+                </button>
 
 
 
 
-    <div class="overflow-x-auto mt-5">
 
-        <table class="w-full">
-            <thead>
-                <tr class="bg-gray-100 shadow-md">
-                    <th class="py-3 px-6 text-left text-sm font-semibold text-gray-600">Type</th>
-                    <th class="py-3 px-6 text-left text-sm font-semibold text-gray-600">Holder name</th>
-                    <th class="py-3 px-6 text-left text-sm font-semibold text-gray-600">Location</th>
-                    <th class="py-3 px-6 text-left text-sm font-semibold text-gray-600">Issue date</th>
-                    <th class="py-3 px-6 text-left text-sm font-semibold text-gray-600">Resubmit date</th>
-                    <th class="py-3 px-6 text-left text-sm font-semibold text-gray-600">Issued by</th>
-                    <th class="py-3 px-6 text-left text-sm font-semibold text-gray-600">Approved by</th>
-                    <th class="py-3 px-6 text-left text-sm font-semibold text-gray-600">Action</th>
+            </div>
+
+        </form>
 
 
-                </tr>
-            </thead>
-            <tbody>
-                @if(isset($assets) && count($assets) > 0)
-                @foreach($assets as $set)
-                <tr class="border-b border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
+        <div class="overflow-x-auto mt-5">
 
-                    <td class="py-4 px-6 text-sm text-gray-600 dark:text-white">{{ $set->type }}</td>
-                    <td class="py-4 px-6 text-sm text-gray-600 dark:text-white">{{ $set->assigned_to }}</td>
-
-                    <td class="py-4 px-6 text-sm text-gray-600 dark:text-white">{{ $set->location}}</td>
-
-                    <td class="py-4 px-6 text-sm text-gray-600 dark:text-white" style="width: 8rem;">{{ $set->issue_date }}</td>
-
-                    <td class="py-4 px-6 text-sm text-gray-600 dark:text-white">{{ $set->resubmit_date }}</td>
-
-                    <td class="py-4 px-6 text-sm text-gray-600 dark:text-white">{{ $set->issued_by }}</td>
-
-                    <td class="py-4 px-6 text-sm text-gray-600 dark:text-white">{{ $set->approved_by }}</td>
-
-                    <td class="py-2 px-4 flex flex-cols-2">
-                        <div class="flex flex-cols-2 mt-1">
-
-                            <a href="{{ route('assets.edit', $set->id) }}">
-                                <i class="ri-edit-line mr-5"></i>
-                            </a>
-
-                            <form action="{{ route('assets.delete', $set->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete?')">
-
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit">
-                                    <i class="ri-delete-bin-line"></i>
-                                </button>
-                            </form>
-                        </div>
-                    </td>
+            <table class="w-full">
+                <thead>
+                    <tr class="bg-gray-100 shadow-md">
+                        <th class="py-3 px-6 text-left text-sm font-semibold text-gray-600">Type</th>
+                        <th class="py-3 px-6 text-left text-sm font-semibold text-gray-600">Holder name</th>
+                        <th class="py-3 px-6 text-left text-sm font-semibold text-gray-600">Location</th>
+                        <th class="py-3 px-6 text-left text-sm font-semibold text-gray-600">Issue date</th>
+                        <th class="py-3 px-6 text-left text-sm font-semibold text-gray-600">Resubmit date</th>
+                        <th class="py-3 px-6 text-left text-sm font-semibold text-gray-600">Issued by</th>
+                        <th class="py-3 px-6 text-left text-sm font-semibold text-gray-600">Approved by</th>
+                        <th class="py-3 px-6 text-left text-sm font-semibold text-gray-600">Action</th>
 
 
-                </tr>
-                @endforeach
-                @else
-                <tr>
-                    <td colspan="5" class="py-4 px-6 text-center text-gray-600">No data available</td>
-                </tr>
-                @endif
-            </tbody>
-        </table>
-        <div class="mt-4">
-            {{ $assets->appends(['items' => request('items')])->links() }}
+                    </tr>
+                </thead>
+                <tbody>
+                    @if(isset($assets) && count($assets) > 0)
+                    @foreach($assets as $set)
+                    <tr class="border-b border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
+
+                        <td class="py-4 px-6 text-sm text-gray-600 dark:text-white">{{ $set->type }}</td>
+                        <td class="py-4 px-6 text-sm text-gray-600 dark:text-white">{{ $set->assigned_to }}</td>
+
+                        <td class="py-4 px-6 text-sm text-gray-600 dark:text-white">{{ $set->location}}</td>
+
+                        <td class="py-4 px-6 text-sm text-gray-600 dark:text-white" style="width: 8rem;">{{ $set->issue_date }}</td>
+
+                        <td class="py-4 px-6 text-sm text-gray-600 dark:text-white">{{ $set->resubmit_date }}</td>
+
+                        <td class="py-4 px-6 text-sm text-gray-600 dark:text-white">{{ $set->issued_by }}</td>
+
+                        <td class="py-4 px-6 text-sm text-gray-600 dark:text-white">{{ $set->approved_by }}</td>
+
+                        <td class="py-2 px-4 flex flex-cols-2">
+                            <div class="flex flex-cols-2 mt-1">
+
+                                <a href="{{ route('assets.edit', $set->id) }}">
+                                    <i class="ri-edit-line mr-5"></i>
+                                </a>
+
+                                <form action="{{ route('assets.delete', $set->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete?')">
+
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit">
+                                        <i class="ri-delete-bin-line"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
 
 
-            <form>
-                <select id="pagination" class="border-2 w-14 dark:bg-gray-600 dark:text-white">
-                    <option value="5" @if($items==5) selected @endif>5</option>
-                    <option value="10" @if($items==10) selected @endif>10</option>
-                    <option value="25" @if($items==25) selected @endif>25</option>
-                </select>
-            </form>
+                    </tr>
+                    @endforeach
+                    @else
+                    <tr>
+                        <td colspan="5" class="py-4 px-6 text-center text-gray-600">No data available</td>
+                    </tr>
+                    @endif
+                </tbody>
+            </table>
+            <div class="mt-4">
+                {{ $assets->appends(['items' => request('items')])->links() }}
+
+
+                <form>
+                    <select id="pagination" class="border-2 w-14 dark:bg-gray-600 dark:text-white">
+                        <option value="5" @if($items==5) selected @endif>5</option>
+                        <option value="10" @if($items==10) selected @endif>10</option>
+                        <option value="25" @if($items==25) selected @endif>25</option>
+                    </select>
+                </form>
+
+            </div>
+
+
 
         </div>
-
-
-
     </div>
-</div>
 </div>
 
 <script>

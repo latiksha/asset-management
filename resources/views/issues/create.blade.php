@@ -23,7 +23,7 @@
             @csrf
             <div class="bg-white p-6 rounded-sm shadow-sm dark:bg-gray-700">
 
-                <!-- First row: Name, Address, GSTIN, State -->
+                <!-- First row -->
                 <div class="grid grid-cols-2 gap-6 mb-6">
 
                     <div>

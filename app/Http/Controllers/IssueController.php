@@ -71,7 +71,7 @@ class IssueController extends Controller
             'status'       => 'required|string|max:20',
             'date'         => 'required|date',
         ]);
-        //trial
+        //if statement for existing issue
         $existingIssue = Issue::where('select_asset', $validated['select_asset'])
             ->where('status', 'open')
 

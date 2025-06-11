@@ -185,6 +185,9 @@
     });
 
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiA4S_sB5FmVtUv4yGKoQJ_IGMctiXl3s&callback=initMap" async defer></script>
+<!-- Google Maps API key  -->
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY_HERE&callback=initMap" async defer></script>
+
+
 
 @endsection
